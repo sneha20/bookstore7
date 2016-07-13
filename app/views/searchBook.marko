@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta itemprop="description" name="Description"
+    content="Async Fragments Demo using Marko"/>
+    <title>Search Book</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+</head>
+<body>
+    <h1>${data.Message}</h1>
+    <center><p for(books in data.book)>
+        <table height="100" width="500" border="2">
+            <tr>
+                <td>Title</td>
+                <td>${books.title}</td>
+            </tr>
+            <tr> 
+                <td>Author</td>
+                <td>${books.author}</td>
+            </tr>
+            <tr>
+                 <td>Price</td>
+                 <td>${books.price}</td>
+            </tr>
+            <tr>
+                  <td>Isbn</td>
+                  <td>${books.isbn}</td>
+            </tr>
+             </table>
+           
+                <form action="/books/addReview/$data.book._id" method="get">
+                    <input type="submit" class="btn btn-default" value="add review"/>
+                </form>
+            
+     
+</p>
+    </center>
+
+
+
+</body>
+</html>

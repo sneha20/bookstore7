@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta itemprop="description" name="Description"
+  content="Async Fragments Demo using Marko"/>
+
+  <title>BookList Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body><center>
+  <form action="/books/searchBook" method="post" >
+    <input type="text"   name="search"/>
+    <input type="submit"  class="btn btn-success btn-lg" value="search"/>
+  </form>
+  <br>  
+  <form action="/books/addBooks" method="get">
+    <input type="submit" class="btn btn-default" value="Add book"/>
+  </form>
+  <table class="table table-hover" id="table_id" width="700" border="2">  
+    <p>${data.message}</p>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th>ISBN</th>
+    <th>Average Rating </th>
+    <th>Reviews</th>
+
+    <p for(book in data.books)>
+     <tr>
+       <td><b><center>${book.title}</center></b></td>
+       <td><center>${book.author}</center></td>
+       <td><center>${book.price}</center></td>
+       <td><center>${book.isbn}</center></td>
+       <td><center>${book.averageRating}</center></td>
+
+
+       <td>
+         <div for(reviews in book.reviews)>
+          Name :${reviews.name}<br>
+          Comment : ${reviews.comment}<br>
+          Rating:  ${reviews.rating}<br><br>
+        </div>
+      </td>
+      <td>
+       <form action="/books/delete/${book._id}" method="post">
+         <input type="submit" class="btn btn-default" value="Delete"/>
+       </form>
+       <form action="/books/addReview/${book._id}" method="get">
+         <input type="submit" class="btn btn-default" value="Add Review"/>
+       </form>
+       <form action="/books/update/${book._id}" method="get">
+         <input type="submit" class="btn btn-default" value="Update"/>
+       </form>
+     </td>
+
+   </tr>
+ </p>
+
+</table>
+</center>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
