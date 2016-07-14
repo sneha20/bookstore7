@@ -31,13 +31,15 @@ var config = {
   }
 };*/
 var config = {
+  db:'mongo ds019472.mlab.com:19472/heroku_c0ccs3tt -u <sneha> -p <123>'
   development: {
     root: rootPath,
     app: {
       name: 'bookseller'
     },
     port: process.env.PORT || 3000,
-    db: 'mongodb://localhost/BookStore'
+    //db: 'mongodb://localhost/BookStore'
+
   }
 };
 
